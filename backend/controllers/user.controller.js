@@ -159,7 +159,7 @@ export const updateProfile = async (req, res) => {
         await user.save();
 
         user = {
-            _id: user._id,
+            userId: user.userId,
             fullName: user.fullName,
             email: user.email,
             phoneNumber: user.phoneNumber,
