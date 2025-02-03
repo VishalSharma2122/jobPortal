@@ -6,6 +6,7 @@ import {
 } from "@radix-ui/react-popover";
 import { Avatar, AvatarImage } from "../components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const user = false;
@@ -26,9 +27,17 @@ function Navbar() {
           <div>
             {!user ? (
               <div className="flex items-center gap-3">
-                               <Button variant="outline">Login</Button>
-               <Button variant="outline" className="bg-[#6A38C2] hover:bg-[#582aa8]">Signup</Button>
-
+                <Link to="/login">
+                  <Button variant="outline">Login</Button>
+                </Link>
+                <Link to ="/Signup">
+                  <Button
+                    variant="outline"
+                    className="bg-[#6A38C2] hover:bg-[#582aa8]"
+                  >
+                    Signup
+                  </Button>
+                </Link>
               </div>
             ) : (
               <Popover>
@@ -62,7 +71,6 @@ function Navbar() {
                 </PopoverContent>
               </Popover>
             )}
-           
           </div>
         </div>
       </div>
