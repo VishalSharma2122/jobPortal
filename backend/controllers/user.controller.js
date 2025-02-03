@@ -26,13 +26,13 @@ export const register = async (req, res) => {
             role,
         })
         return res.status(201).json({
-            message: "account created successfully",
+            message: "account registered successfully",
             success: true
 
         })
 
     } catch (error) {
-        console.log(error);
+        console.log("error during user registration",error);
         return res.status(500).json({
             message: "Server error",
             success: false
