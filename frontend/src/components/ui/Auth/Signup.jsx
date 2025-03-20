@@ -12,6 +12,7 @@ import { USER_API_ENDPOINT } from "@/utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
+import Footer from "@/components/Footer";
 
 function Signup() {
   const [input, setInput] = useState({
@@ -74,7 +75,7 @@ function Signup() {
       <div className="flex items-center justify-center  max-w-7xl mx-auto ">
         <form
           onSubmit={submitHandler}
-          className="w-1/2 border border-gray-200 rounded-md p-5 shadow-md"
+          className="w-1/2 border border-gray-200 rounded-md p-5 shadow-md mt-10 mb-10"
         >
           <h1 className="font-bold text-xl mb-5 "> Signup</h1>
           <div className="my-2">
@@ -176,13 +177,14 @@ function Signup() {
           </button>
          )}
           <span>
-            If already have an account then
-            <Link to="/login" className="text-red-600 hover:text-black">
+            If already have an account ,  
+            <Link to="/login" className="text-red-600 hover:text-[#582aa8]">
               Login
             </Link>
           </span>
         </form>
       </div>
+      <Footer/>
     </>
   );
 }

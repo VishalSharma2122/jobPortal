@@ -1,4 +1,5 @@
 import express from 'express'
+const app = express()
 import cookieParser from 'cookie-parser';
 import cors from "cors"
 import dotenv from "dotenv";
@@ -8,7 +9,7 @@ import userRoute from './Routes/user.route.js'
 import companyRoute from './Routes/company.route.js'
 import jobRoute from './Routes/job.route.js'
 import applicationRoute from "./Routes/application.route.js"
-const app = express()
+
 
 
 

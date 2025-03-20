@@ -2,6 +2,8 @@ import Navbar from '../shared/Navbar'
 import React from 'react'
 import HeroSection from './HeroSection'
 import CategoryCarousel from './CategoryCarousel'
+import LatestJobs from './LatestJobs'
+import Footer from './Footer'
 
 function Home() {
   return (
@@ -9,6 +11,9 @@ function Home() {
     <Navbar/>
     <HeroSection/>
     <CategoryCarousel/>
+    <LatestJobs/>
+    <Footer/>
+    
     </>
   )
 }
