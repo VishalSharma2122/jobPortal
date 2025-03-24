@@ -2,6 +2,7 @@ import Navbar from "@/shared/Navbar";
 import React from "react";
 import FilterCard from "./FilterCard";
 import JobCard from "./JobCard";
+import Footer from "@/shared/Footer";
 
 const JobsArr = [1, 2, 3, 4, 5, 6, 7, 8,9];
 
@@ -12,7 +13,7 @@ export default function Jobs() {
 
       <div className="max-w-7xl mx-auto mt-5 ">
         <div className="flex gap-5">
-          <div className="w-20%">
+          <div className="w-1/6">
             <FilterCard />
           </div>
             {JobsArr.length <= 0 ? (
@@ -32,6 +33,7 @@ export default function Jobs() {
           }
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -12,7 +12,7 @@ import { USER_API_ENDPOINT } from "@/utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
-import Footer from "@/components/Footer";
+import Footer from "@/shared/Footer";
 
 function Signup() {
   const [input, setInput] = useState({
@@ -173,7 +173,7 @@ function Signup() {
             type="submit"
             className="w-full font-bold bg-[#6A38C2] hover:bg-[#582aa8] my-5 border border-grey-200 shadow-md rounded-md p-2 "
           >
-            Login
+            SignUp
           </button>
          )}
           <span>

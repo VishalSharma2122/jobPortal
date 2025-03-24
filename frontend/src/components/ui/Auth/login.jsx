@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 import React from "react";
-import Footer from "@/components/Footer";
+import Footer from "@/shared/Footer";
 
 
 function login() {
