@@ -1,6 +1,8 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import getDataUri from "../utils/dataUri.js";
+import cloudinary from "../utils/cloudinary.js";
 export const register = async (req, res) => {
   try {
     const { fullName, email, phoneNumber, password, role } = req.body;
@@ -10,6 +12,11 @@ export const register = async (req, res) => {
         success: false,
       });
     }
+
+    const file = req.file;
+    const fileUri = getDataUri(file);
+    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
     const user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
@@ -24,7 +31,11 @@ export const register = async (req, res) => {
       phoneNumber,
       password: hashedPassword,
       role,
+      profile: {
+        profilePhoto: cloudResponse.secure_url,
+      },
     });
+
     return res.status(201).json({
       message: "account registered successfully",
       success: true,
@@ -90,7 +101,9 @@ export const login = async (req, res) => {
       profile: user.profile,
     };
 
-    return res.status(200).cookie("token", token, {
+    return res
+      .status(200)
+      .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
         httpsOnly: true,
         sameSite: "strict",
@@ -106,23 +119,14 @@ export const login = async (req, res) => {
 };
 
 // logout
-export const logout = (req, res) => {
+export const logout = async (req, res) => {
   try {
-    // Clear the authentication token from the cookies (or localStorage, depending on your setup)
-    res.clearCookie("token");
-    {
-      // Clear the cookie where the token is stored
-      return res.status(200).json({
-        message: "Logged out successfully",
-        success: true,
-      });
-    }
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({
-      message: "Internal server error",
-      success: false,
+    return res.status(200).cookie("token", "", { maxAge: 0 }).json({
+      message: "Logged out successfully.",
+      success: true,
     });
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -130,12 +134,16 @@ export const logout = (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
-    const { fullName, email, phoneNumber, role, bio, skills } = req.body;
+    const { fullName, email, phoneNumber, bio, skills } = req.body;
+
+    //cloudinary
     const file = req.file;
+    const fileUri = getDataUri(file);
+    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
-    // Assuming Cloudinary logic will go here...
+    let skillsArray = skills ? skills.split(",") : [];
 
-    const userId = req.userId; // Use user info from the request after authentication
+    const userId = req.userId;
     let user = await User.findById(userId);
 
     if (!user) {
@@ -149,15 +157,15 @@ export const updateProfile = async (req, res) => {
     if (fullName) user.fullName = fullName;
     if (email) user.email = email;
     if (phoneNumber) user.phoneNumber = phoneNumber;
-    if (role) user.role = role;
-    if (bio) user.bio = bio;
+    if (bio) user.profile.bio = bio;
     if (skills) user.profile.skills = skillsArray;
 
-    if (skills) {
-      let skillsArray = skills.split(",");
-    }
-
     // Assuming resume upload will go here...
+    if (cloudResponse) {
+      user.profile.resume = cloudResponse.secure_url;
+    user.profile.resumeOriginalName=file.originalname 
+      // for saving the orignal name
+    }
 
     await user.save();
 
