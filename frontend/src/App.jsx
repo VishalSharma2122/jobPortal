@@ -1,5 +1,4 @@
-import Home from './components/Home';  // ✅ Correct import
-
+import Home from './components/Home'; 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './components/ui/Auth/Login'
 import Signup from './components/ui/Auth/Signup'
