@@ -15,7 +15,7 @@ import React from "react";
 import Footer from "@/shared/Footer";
 
 
-function login() {
+function Login() {
   const [ input, setInput ] = useState({
     email: "",
     password: "",
@@ -141,4 +141,4 @@ withCredentials:true
   );
 }
 
-export default login;
+export default Login;
