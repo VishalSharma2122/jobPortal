@@ -1,4 +1,4 @@
-const tailwindcssAnimate = require("tailwindcss-animate");
+import tailwindcssAnimate from ("tailwindcss-animate");
 
 module.exports = {
     darkMode: ["class"],
