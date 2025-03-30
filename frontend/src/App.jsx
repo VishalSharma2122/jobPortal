@@ -1,6 +1,5 @@
 import Home from './components/Home'; 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
 import Signup from './components/ui/Auth/Signup'
 import Jobs from './components/Jobs'
 import JobDescription from './components/JobDescription'

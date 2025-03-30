@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://jobportal-2hn1.onrender.com",
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "Content-Type, Authorization",
