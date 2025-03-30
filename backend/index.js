@@ -20,9 +20,13 @@ const __dirname = path.resolve()
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+const allowedOrigins = [
+  "http://localhost:5173", // For local development
+  "https://jobportal-2hn1.onrender.com" // Deployed frontend
+];
 app.use(
   cors({
-    origin: "https://jobportal-2hn1.onrender.com",
+    origin: allowedOrigins,
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "Content-Type, Authorization",
