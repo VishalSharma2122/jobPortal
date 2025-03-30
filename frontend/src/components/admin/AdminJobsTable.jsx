@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Table, TableBody,TableCaption, TableCell, TableHead, TableHeader,TableRow,} from "../ui/table";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Edit2, Eye, MoreHorizontal } from "lucide-react";
+import { Eye, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
