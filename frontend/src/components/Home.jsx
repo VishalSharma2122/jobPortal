@@ -4,7 +4,7 @@ import HeroSection from './HeroSection'
 import CategoryCarousel from './CategoryCarousel'
 import LatestJobs from './LatestJobs'
 import Footer from '../shared/Footer'
-import useGetAllJobs from '@/Hooks/useGetAllJobs'
+import useGetAllJobs from '../Hooks/useGetAllJobs'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 

@@ -9,7 +9,7 @@ import AppliedJobTable from "./AppliedJobTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
 import { useSelector } from "react-redux";
 import Footer from "@/shared/Footer";
-import useGetAppliedJobs from "@/Hooks/useGetAppliedJobs";
+import useGetAppliedJobs from "../Hooks/useGetAppliedJobs";
 
 // const skills = ["Html", "Css", "Javascript", "Reactjs"]
 const isResume = true;
