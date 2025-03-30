@@ -19,7 +19,8 @@ const persistConfig = {
     key: 'root',
     version: 1,
     storage,
-}
+    blacklist: ['application'], 
+};
 
 const rootReducer = combineReducers({
     auth:authSlice,
@@ -39,5 +40,6 @@ const store = configureStore({
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }),
+        devTools: process.env.NODE_ENV !== "production"
 });
 export default store;

@@ -9,8 +9,11 @@ import userRoute from './Routes/user.route.js'
 import companyRoute from './Routes/company.route.js'
 import jobRoute from './Routes/job.route.js'
 import applicationRoute from "./Routes/application.route.js"
+import path from 'path'
 
 
+
+const __dirname = path.resolve()
 
 
 //midilware
@@ -35,6 +38,11 @@ app.use("/api/v1/user",userRoute);
 app.use("/api/v1/company",companyRoute);
 app.use("/api/v1/job",jobRoute);
 app.use("/api/v1/application",applicationRoute);
+
+app.use(express.static(path.join(__dirname, "./frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+});
 
 
 // connect to mongodb

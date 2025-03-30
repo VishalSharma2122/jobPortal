@@ -46,8 +46,7 @@ function Footer() {
       <div className="text-center md:text-right">
         <h2 className="text-white text-lg font-bold">About Us</h2>
         <h4 className="mt-1">
-          "Elevating Ideas into Seamless Web Solutions - <br />
-          Where Innovation Meets Precision in Development"
+        Job Portal – Your Gateway to Career Opportunities!
         </h4>
         <div className="mt-2 space-x-4 text-2xl">
           <a href="https://www.facebook.com/pandit.vishalguru" className="text-blue-700 hover:opacity-75">

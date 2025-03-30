@@ -1,20 +1,9 @@
 import React from "react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@radix-ui/react-popover";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"; 
+
 import { Avatar, AvatarImage } from "../components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  LogOut,
-  User,
-  User2,
-  UserCheck,
-  UserCircle,
-  UserCircle2,
-  UserCircle2Icon,
-} from "lucide-react";
+import { LogOut, UserCircle2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -52,16 +41,26 @@ function Navbar() {
         </div>
         <div className=" flex items-center gap-10 ">
           <ul className="flex font-medium items-center gap-5">
-            <li>
-              {" "}
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/jobs"}>Jobs</Link>
-            </li>
-            <li>
-              <Link to={"/browse"}>Browse</Link>
-            </li>
+            {user && user.role === "recruiter" ? (
+              <>
+                <li>
+                  <Link to="/admin/companies">Companies</Link>
+                </li>
+                <li><Link to="/admin/jobs">Jobs</Link></li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/jobs">Jobs</Link>
+                </li>
+                <li>
+                  <Link to="/browse">Browse</Link>
+                </li>
+              </>
+            )}
           </ul>
           <div>
             {!user ? (
@@ -100,14 +99,17 @@ function Navbar() {
                     </div>
                     <div className="flex flex-col my-2 text-gray-600">
                       <div className="flex w-fit items-center cursor-pointer mb-2">
-                        <UserCircle2 />
-                        <Button variant="Ghost">
-                          <Link to={"/Profile"}>Profile</Link>
-                        </Button>
+                        {user && user.role === "student" && (
+                          <div className="flex w-fit items-center gap-2 cursor-pointer">
+                            <UserCircle2/>
+                            <Button variant="link">
+                              <Link to="/profile">View Profile</Link>
+                            </Button>
+                          </div>
+                        )}
                       </div>
                       <div className="flex w-fit items-center gap-2 cursor-pointer  ">
                         <Button onClick={logOutHandler} variant="outline">
-                          {" "}
                           <LogOut />
                           Logout
                         </Button>
