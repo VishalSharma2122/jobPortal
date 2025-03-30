@@ -13,7 +13,8 @@ import CompanySetup from './components/admin/CompanySetup'
 import AdminJobs from './components/admin/AdminJobs'
 import PostJob from './components/admin/PostJob'
 import Applicants from './components/admin/Applicants'
-import Login from './components/ui/Auth/Login';
+import Login from './components/ui/Auth/login';
+
 
 
 
@@ -25,7 +26,9 @@ const appRouter = createBrowserRouter([
   {
     path:'/login',
     element:<Login/>
+
   },
+
   {
     path: '/signup',
     element: <Signup />
