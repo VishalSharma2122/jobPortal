@@ -43,7 +43,7 @@ app.use("/api/v1/company",companyRoute);
 app.use("/api/v1/job",jobRoute);
 app.use("/api/v1/application",applicationRoute);
 
-
+// for allow credentials in cors
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   next();

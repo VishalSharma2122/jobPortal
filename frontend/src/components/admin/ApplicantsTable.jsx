@@ -14,10 +14,17 @@ const ApplicantsTable = () => {
   const statusHandler = async (status, id) => {
 
     try {
-      axios.defaults.withCredentials = true;
-      const res = await axios.post("https://jobportal-2hn1.onrender.com/api/v1/application/statusUpdate/${id}",
-        { status }
+      const res = await axios.post(
+        `https://jobportal-2hn1.onrender.com/api/v1/application/statusUpdate/${id}`, 
+        { status },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Include auth token
+            "Content-Type": "application/json",
+          },
+        }
       );
+      
       if (res.data.success) {
         toast.success(res.data.message);
       }
