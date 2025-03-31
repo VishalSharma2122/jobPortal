@@ -45,14 +45,19 @@ const CompanySetup = () => {
     }
     try {
       setLoading(true);
-      const res = await axios.put("https://jobportal-2hn1.onrender.com/api/v1/company/update/${params.id}",
+      const res = await axios.put(
+        `https://jobportal-2hn1.onrender.com/api/v1/company/update/${params.id}`,
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: { 
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          },
+
           withCredentials: true,
         }
       );
-      
+
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/admin/companies");
@@ -60,7 +65,7 @@ const CompanySetup = () => {
     } catch (error) {
       console.log("Update Error:", error);
       toast.error(error.response?.data?.message || "Failed to update company");
-        } finally {
+    } finally {
       setLoading(false);
     }
   };
