@@ -5,7 +5,6 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { COMPANY_API_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { setSingleCompany } from "@/redux/companySlice";
@@ -21,7 +20,7 @@ const CompanyCreate = () => {
     }
 
     try {
-        const res = await axios.post(`${COMPANY_API_END_POINT}/register`, { name:companyName }, {
+        const res = await axios.post("https://jobportal-2hn1.onrender.com/api/v1/company/register", { name:companyName }, {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
         });
@@ -33,7 +32,7 @@ const CompanyCreate = () => {
         }
     } catch (error) {
         console.error("Error registering company:", error);
-        toast.error(error.response?.data?.message || "Failed to register company");
+        toast.error(error.response?.data?.message)
     }
 
   };
@@ -54,7 +53,7 @@ const CompanyCreate = () => {
           type="text"
           className="my-2"
           placeholder="JobHunt, Microsoft etc."
-          vlaue={companyName}
+          value={companyName}
           onChange={(e) => setCompanyName(e.target.value)}
         />
         <div className="flex items-center gap-2 my-10">

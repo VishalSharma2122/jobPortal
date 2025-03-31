@@ -8,7 +8,6 @@ import React from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-import { USER_API_ENDPOINT } from "@/utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
@@ -48,7 +47,7 @@ function Signup() {
 
     try {
          dispatch(setLoading(true));
-        const res = await axios.post(`${USER_API_ENDPOINT}/register`, formdata, {
+        const res = await axios.post("https://jobportal-2hn1.onrender.com/api/v1/user/register", formdata, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },

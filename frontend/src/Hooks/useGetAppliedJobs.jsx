@@ -1,5 +1,4 @@
 import { setAllAppliedJobs } from "@/redux/jobSlice";
-import { APPLICATION_API_END_POINT } from "@/utils/constant";
 import axios from "axios"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
@@ -10,7 +9,7 @@ const useGetAppliedJobs = () => {
     useEffect(()=>{
         const fetchAppliedJobs = async () => {
             try {
-                const res = await axios.get(`${APPLICATION_API_END_POINT}/getJob`, {withCredentials:true});
+                const res = await axios.get("https://jobportal-2hn1.onrender.com/api/v1/application/getJob", {withCredentials:true});
                 if(res.data.success){
                     dispatch(setAllAppliedJobs(res.data.application));
                 }

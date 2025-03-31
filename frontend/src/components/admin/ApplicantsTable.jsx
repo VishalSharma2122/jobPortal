@@ -5,7 +5,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
-import { APPLICATION_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
 
 const shortlistingStatus = ["Accepted", "Rejected"];
@@ -16,8 +15,7 @@ const ApplicantsTable = () => {
 
     try {
       axios.defaults.withCredentials = true;
-      const res = await axios.post(
-        `${APPLICATION_API_END_POINT}/statusUpdate/${id}`,
+      const res = await axios.post("https://jobportal-2hn1.onrender.com/api/v1/application/statusUpdate/${id}",
         { status }
       );
       if (res.data.success) {

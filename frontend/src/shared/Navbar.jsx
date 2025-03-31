@@ -7,7 +7,6 @@ import { LogOut, UserCircle2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { USER_API_ENDPOINT } from "@/utils/constant";
 import { setUser } from "@/redux/authSlice";
 import { toast } from "sonner";
 
@@ -17,7 +16,7 @@ function Navbar() {
   const navigate = useNavigate();
   const logOutHandler = async () => {
     try {
-      const res = await axios.get(`${USER_API_ENDPOINT}/logout`, {
+      const res = await axios.get("https://jobportal-2hn1.onrender.com/api/v1/user/logout", {
         withCredentials: true,
       });
       if (res.data.success) {
